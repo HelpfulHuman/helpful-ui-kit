@@ -7,12 +7,17 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "helpful-react-scripts": "1.1.13"
+    "helpful-react-scripts": "1.1.13",
+    "@storybook/react": "^3.2.14",
+    "@storybook/addon-actions": "^3.2.14",
+    "@storybook/addon-links": "^3.2.14"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
