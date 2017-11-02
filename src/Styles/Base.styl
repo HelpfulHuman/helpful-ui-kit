@@ -1,0 +1,29 @@
+html {
+  font-size: $rem-base;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+.app {
+  height: 100vh;
+}
+
+.app__container {
+  height: inherit;
+}

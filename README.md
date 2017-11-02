@@ -3,6 +3,8 @@
 A collection of UI elements that you can import into a project dynamically.
 
 ## Collection includes:
+
+## Collection will include:
 - Button
 - Inputs
   - Label
@@ -51,3 +53,5 @@ A collection of UI elements that you can import into a project dynamically.
 - Headers
 - Dividers
 - Tables
+
+This project was bootstrapped with [Helpful React Scripts](https://github.com/helpfulhuman/helpful-react-scripts)

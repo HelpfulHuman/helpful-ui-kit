@@ -1,0 +1,64 @@
+// Adapted from: https://github.com/brindille/stylus-media-queries
+
+///////////////////
+//  SCREEN SIZE  //
+///////////////////
+screen(sizeRange) {
+  if sizeRange[1] {
+    @media screen and (min-width: sizeRange[0]) and (max-width: sizeRange[1]) {
+      {block}
+    }
+  } else {
+    error('screen() expected two values but received only one');
+  }
+}
+
+min-screen(minWidth) {
+  @media screen and (min-width: minWidth) {
+    {block}
+  }
+}
+
+max-screen(maxWidth) {
+  @media screen and (max-width: maxWidth) {
+    {block}
+  }
+}
+
+screen-height(sizeRange) {
+  if sizeRange[1] {
+    @media screen and (min-height: sizeRange[0]) and (max-height: sizeRange[1]) {
+      {block}
+    }
+  } else {
+    error('screen-height() expected two values but received only one')
+  }
+}
+
+max-screen-height(maxHeight) {
+  @media screen and (max-height: maxHeight) {
+    {block}
+  }
+}
+
+min-screen-height(minHeight) {
+  @media screen and (min-height: minHeight) {
+    {block}
+  }
+}
+
+/////////////////////
+//  PIXEL DENSITY  //
+/////////////////////
+hdpi(density = 1.3) {
+  media = " all"
+  query = media + " and (-webkit-min-device-pixel-ratio: " + density + "), "
+  query += media + " and (min--moz-device-pixel-ratio: " + density + "), "
+  query += media + " and (-o-min-device-pixel-ratio: " + density + "/1), "
+  query += media + " and (min-device-pixel-ratio: " + density + "), "
+  query += media + " and (min-resolution: " + ceil( density * 96 ) + "dpi), "
+  query += media + " and (min-resolution: " + density + "dppx)"
+  @media query {
+    {block}
+  }
+}

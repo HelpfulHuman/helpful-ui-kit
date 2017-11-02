@@ -1,0 +1,55 @@
+.landing {
+  min-height: 100%;
+  padding: rem(16);                                          // Rem Calc Function
+  background: $tertiary;                                     // Color variables
+  text-align: center;
+  bodyFont();                                                // Font Stack Mixin
+
+  button {
+    margin: rem(8);
+    border: none;
+    font-size: 1em;
+    padding: rem(8 16);
+    background: $secondary;
+    displayFontBold();
+    color: $off-white;
+    border-radius: rem(5);
+    transition: background 250ms ease;
+  }
+
+  span {
+    display: block;
+  }
+
+  > div:first-of-type {
+    flexContainer(false, true, 'column');                // Flex Container Mixin
+    position: relative;
+    margin: rem(15) auto rem(150);
+    padding: rem(20);
+    border-radius: 5px;
+    background: $off-white;
+    box-shadow: 1px 1px 3px rgba($secondary, .15);
+
+    &::before {
+      arrow(                                                      // Arrow mixin
+        arrowDirection: 'top',
+        arrowHeight: 10px,
+        arrowWidth: 16px,
+        color: $off-white,
+        positioned: true
+      );
+    }
+
+    > h1,
+    > h2 {
+      flexItem();                                             // Flex Item mixin
+      displayFontBold();
+      line-height: 1.5;
+      color: $secondary;
+    }
+  }
+}
+
+.human {
+  font-size: 44px;
+}

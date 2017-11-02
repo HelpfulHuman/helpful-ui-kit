@@ -1,0 +1,94 @@
+////////////////////////
+//      REM CALC      //
+////////////////////////
+rem(values) {
+  $base = $rem-base is a "unit" ? $rem-base : 16;
+  $result = null;
+
+  for value in values {
+    if type( value ) == "unit" && ( unit( value ) == "px" || unit( value ) == "" ) {
+      value = unit( round( value / $base, 3 ), "rem" )
+
+      if value == "0rem" {
+        value = 0
+      }
+
+      $result = $result != null ? $result value : value
+    }
+  }
+}
+
+////////////////////////
+//      Flexbox       //
+////////////////////////
+flexContainer( centerContent = false, inlineFlex = false, flexDirection = 'row' ) {
+  flex-wrap: wrap;
+
+  if inlineFlex {
+    display: inline-flex;
+  } else {
+    display: flex;
+  }
+
+  if flexDirection = 'column' {
+    flex-direction: column;
+  }
+
+  if centerContent {
+    justify-content : center;
+    align-items     : center;
+    align-content   : center;
+  }
+}
+
+flexItem(flexGrow = 1, flexShrink = 0, flexBasis = auto, flexSelf = auto) {
+  flex       : flexGrow flexShrink flexBasis;
+  align-self : flexSelf;
+}
+
+////////////////////////
+//       ARROW        //
+////////////////////////
+arrow(arrowDirection= 'up', arrowWidth = 16, arrowHeight= 10, color= $white, positioned= false) {
+  $arrowWidth = unit(arrowWidth, px);
+  $arrowHeight = unit(arrowHeight, px);
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  if (arrowDirection == 'up' || arrowDirection == 'top') {
+    border-width: 0 ($arrowWidth / 2) $arrowHeight ($arrowWidth / 2);
+    border-color: transparent transparent color transparent;
+    if (positioned == true) {
+      top: "-%s" % $arrowHeight;
+      left: 50%;
+      margin-left: "calc(-%s / 2)" % $arrowWidth;
+    }
+  } else if (arrowDirection == 'right') {
+    border-width: ($arrowWidth / 2) 0 ($arrowWidth / 2) $arrowHeight;
+    border-color: transparent transparent transparent color;
+    if (positioned == true) {
+      right: "-%s" % $arrowHeight;
+      top: 50%;
+      margin-top: "calc(-%s / 2)" % $arrowWidth;
+    }
+  } else if (arrowDirection == 'down' || arrowDirection == 'bottom') {
+    border-width: $arrowHeight ($arrowWidth / 2) 0 ($arrowWidth / 2);
+    border-color: color transparent transparent transparent;
+    if (positioned == true) {
+      bottom: "-%s" % $arrowHeight;
+      left: 50%;
+      margin-left: "calc(-%s / 2)" % $arrowWidth;
+    }
+  } else if (arrowDirection == 'left') {
+    border-width: ($arrowWidth / 2) $arrowHeight ($arrowWidth / 2) 0;
+    border-color: transparent color transparent transparent;
+    if (positioned == true) {
+      left: "-%s" % $arrowHeight;
+      top: 50%;
+      margin-top: "calc(-%s / 2)" % $arrowWidth;
+    }
+  }
+}
