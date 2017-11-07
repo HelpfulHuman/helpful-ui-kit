@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import Landing from '../src/Components/Landing';
+import Table from '../src/Components/Table';
+import { tableColumns, tableData } from '../src/Services/Constants';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
@@ -15,3 +17,6 @@ storiesOf('Button', module)
 
 storiesOf('Landing', module)
   .add('Landing Page Component', () => <Landing />);
+
+  storiesOf('Table', module)
+  .add('Table Component', () => <Table data={tableData} columns={tableColumns} />)

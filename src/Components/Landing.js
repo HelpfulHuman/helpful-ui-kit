@@ -1,11 +1,11 @@
 import React from 'react';
+import Table from './Table';
 
 export default class Landing extends React.Component {
   render() {
     if (process.env.NODE_ENV !== 'production') {
       console.log('👨‍🔬 Application properties:\n', this.props);
     }
-
     return (
       <div className="landing">
         <span className="human" role="img" aria-label="scientist">
