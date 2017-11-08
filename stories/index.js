@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import Landing from '../src/Components/Landing';
 import Table from '../src/Components/Table';
-import { tableColumns, tableData } from '../src/Services/Constants';
+import { tableColumns, tableData } from '../src/Data/TableData';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
