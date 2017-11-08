@@ -2,6 +2,7 @@ import React from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
+import styled from 'styled-components';
 
 export default class Table extends React.Component {
     
@@ -27,9 +28,11 @@ export default class Table extends React.Component {
         const property = this.state.sortProperty;
         if (property) {
           return this.props.data.sort((a, b) => {
-            if (a[property] > b[property]) {
+            const itemA = a[property] ? a[property].toLowerCase() : '';
+            const itemB = b[property] ? b[property].toLowerCase() : '';
+            if (itemA > itemB) {
               return this.state.sortOrder ? 1 : -1;
-            } else if (b[property] > a[property]) {
+            } else if (itemB > itemA) {
               return this.state.sortOrder ? -1 : 1;
             } else {
               return 0
@@ -41,8 +44,13 @@ export default class Table extends React.Component {
     }
 
     render() {
+        const TableWrapper = styled.table`
+            width: 100%;
+            background: ${this.props.styles ? this.props.styles.backgroundColor : 'yellow'};
+            ${this.props.showBorder ? `border: 1px solid black` : null};
+        `
         return (
-            <table tabIndex={0}>
+            <TableWrapper tabIndex={0}>
                 <TableHeader
                     columns={this.props.columns}
                     toggleSort={this.toggleSort}
@@ -55,7 +63,7 @@ export default class Table extends React.Component {
                     columns={this.props.columns}
                 />
                 {this.props.children}
-            </table>
+            </TableWrapper>
         )
     }
 }
