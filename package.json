@@ -1,23 +1,39 @@
 {
   "name": "helpful-ui-kit",
   "version": "0.1.0",
-  "main": "./build/static/js/index.js",
-  "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+  "description": "Put a description here",
+  "main": "./build/main.js",
+  "peerDependencies": {
+    "react": "^16.0.0"
   },
-  "devDependencies": {
-    "helpful-react-scripts": "1.1.13",
-    "@storybook/react": "^3.2.14",
-    "@storybook/addon-actions": "^3.2.14",
-    "@storybook/addon-links": "^3.2.14"
+  "dependencies": {
+
+    "react": "^16.0.0",
+    "webpack": "^2.6.1",
+    "react-dom": "^16.0.0"    
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "author": {
+    "name": "Your name",
+    "email": "your email"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "@storybook/react": "^3.2.14",
+    "@storybook/addon-actions": "^3.2.14",
+    "@storybook/addon-links": "^3.2.14",
+    "styled-components": "^2.2.3",
+    "polished": "^1.8.2"
   }
 }
