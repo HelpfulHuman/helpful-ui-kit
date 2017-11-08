@@ -1,3 +1,20 @@
+import Table from './Components/Table';
+import TableRow from './Components/TableRow';
+import TableHeader from './Components/TableHeader';
+import TableBody from './Components/TableBody';
+import TableFooter from './Components/TableFooter';
+import TableHeaderColumn from './Components/TableHeaderColumn';
+import TableBodyColumn from './Components/TableBodyColumn';
+export { 
+    Table,
+    TableRow,
+    TableHeader,
+    TableBody,
+    TableFooter,
+    TableHeaderColumn,
+    TableBodyColumn
+};
+
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import registerServiceWorker from './registerServiceWorker';
@@ -9,8 +26,6 @@
 // import publicRoutes from './routes';
 // import axe from 'react-axe';
 // import App from './App';
-import Table from './Components/Table';
-export default { Table };
 
 // const store = createStore();
 // const browserHistory = createHistory();
