@@ -2,38 +2,54 @@
   "name": "helpful-ui-kit",
   "version": "0.1.0",
   "description": "Put a description here",
-  "main": "./build/main.js",
+  "main": "./build/index.js",
+  "jsnext:main": "./build/index.es.js",
+  "bugs": {
+    "url": "https://github.com/helpfulhuman/helpful-ui-kit/issues"
+  },
+  "homepage": "https://github.com/helpfulhuman/helpful-ui-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helpfulhuman/helpful-ui-kit.git"
+  },
+  "keywords": [
+    "react",
+    "kit",
+    "framework",
+    "ui",
+    "helpful"
+  ],
   "peerDependencies": {
     "react": "^16.0.0"
   },
   "dependencies": {
-
-    "react": "^16.0.0",
-    "webpack": "^2.6.1",
-    "react-dom": "^16.0.0"    
+    "react": "^16.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack",
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "git push origin master && git push origin master --tags",
+    "clean": "rm -rf dist/",
+    "build": "rollup -c",
+    "watch": "npm run build -- --watch",
+    "test": "mocha",
+    "tdd": "npm run watch | mocha --watch",
+    "prepublish": "npm run clean && npm run build && npm run test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "author": {
-    "name": "Your name",
-    "email": "your email"
-  },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "@storybook/react": "^3.2.14",
     "@storybook/addon-actions": "^3.2.14",
     "@storybook/addon-links": "^3.2.14",
-    "styled-components": "^2.2.3",
-    "polished": "^1.8.2"
+    "@storybook/react": "^3.2.14",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "polished": "^1.8.2",
+    "rollup": "^0.51.2",
+    "rollup-plugin-buble": "^0.17.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-watch": "^4.3.1",
+    "sinon": "^4.1.2",
+    "styled-components": "^2.2.3"
   }
 }
