@@ -1,6 +1,7 @@
 import React from 'react';
 import TableRow from './TableRow';
 import TableBodyColumn from './TableBodyColumn';
+import styled from 'styled-components';
 
 export default class TableBody extends React.Component {
 
@@ -18,6 +19,7 @@ export default class TableBody extends React.Component {
                             key={`${index}-${item[column.property]}`}
                             item={item}
                             value={column.value(item) === 0 ? 0 : column.value(item) || column.placeholder || ''}
+                            alignText={column.alignText}
                         />
                     )}
                 </TableRow>
@@ -26,10 +28,15 @@ export default class TableBody extends React.Component {
     }
 
     render() {
+        const StyledBody = styled.tbody`
+            tr:not(:last-of-type) {
+                border-bottom: 1px solid lightgray;
+            };
+        `
         return (
-            <tbody tabIndex={0}>
+            <StyledBody tabIndex={0}>
                 {this.props.children || this.createTableBody()}
-            </tbody>
+            </StyledBody>
         )
     }
 }

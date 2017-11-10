@@ -17,11 +17,13 @@ export default class TableHeader extends React.Component {
                     key={`${i}-${column.title}`}
                     value={column.title}
                     toggleSort={column.sortProperty && toggleSort ? () => toggleSort(column.sortProperty) : null}
+                    alignText={column.alignText}
                 />
             )
         })
     }
 
+    
     render() {
         return (
             <thead tabIndex={0}>

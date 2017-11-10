@@ -16,6 +16,8 @@ export default class Table extends React.Component {
         this.formatData = this.formatData.bind(this);
     }
 
+    // toggles the sort property/order for the data array being passed in.  Property is
+    // sortProperty from columns array.
     toggleSort(property) {
         if (!this.state.sortProperty || property !== this.state.sortProperty) {
           this.setState({ sortProperty: property, sortOrder: true });
@@ -24,6 +26,7 @@ export default class Table extends React.Component {
         }
     }
     
+    // if sort properties exist, sort data before rendering item rows.
     formatData() {
         const property = this.state.sortProperty;
         if (property) {
@@ -44,13 +47,15 @@ export default class Table extends React.Component {
     }
 
     render() {
+
         const TableWrapper = styled.table`
             width: 100%;
-            background: ${this.props.styles ? this.props.styles.backgroundColor : 'yellow'};
-            ${this.props.showBorder ? `border: 1px solid black` : null};
+            border-collapse: collapse;
+            border: 1px solid lightgray
         `
+
         return (
-            <TableWrapper tabIndex={0}>
+            <TableWrapper className="table" tabIndex={0}>
                 <TableHeader
                     columns={this.props.columns}
                     toggleSort={this.toggleSort}
@@ -58,10 +63,7 @@ export default class Table extends React.Component {
                 <TableBody
                     columns={this.props.columns}
                     data={this.formatData()}
-                />
-                <TableFooter
-                    columns={this.props.columns}
-                />
+                /> 
                 {this.props.children}
             </TableWrapper>
         )
