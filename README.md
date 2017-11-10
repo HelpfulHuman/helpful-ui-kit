@@ -1,11 +1,38 @@
 # Helpful UI Kit
 
-A collection of UI elements that you can import into a project dynamically.
+A collection of UI elements that you can import into your React project.
 
 ## Collection includes:
+- Tables
+  - responsive
+  - sortable
+  - scrollable
+
 
 ## Collection will include:
+- Accordian
+- Alert
+- Avatar
+- Avatar with text
+- Badge
+- Bread crumbs
 - Button
+- Card
+- Code block
+- Dividers
+- Google Map
+- Headers
+- Hero
+- Horizontal navigation
+  - Overflow list
+  - Overflow scroll
+  - Overflow hamburger
+    - Drawer navigation
+- HTML video element
+- Icons
+- Icon text
+- Image
+  - with figure
 - Inputs
   - Label
   - Text
@@ -19,43 +46,18 @@ A collection of UI elements that you can import into a project dynamically.
   - Checkbox
   - Text area
   - Range
-- Icon text
-- Avatar with text
-- Icons
-- Anchor link
-- Vertical navigation
-- Horizontal navigation
-  - Overflow list
-  - Overflow scroll
-  - Overflow hamburger
-    - Drawer navigation
-- Code block
-- HTML video element
-- Image with figure
-- List
-- Google Map
-- Tile
-- Card
-- Loading spinner
-- Progress bar
-- Modal
-- Alert
-- Badge
-- Overlay
-- Bread crumbs
-- Pagination
-- Tabs
-- Accordian
 - Lightbox
-- Sticky element
-- Tooltips
-- Hero
-- Headers
-- Dividers
-- Tables
-  - responsive
-  - sortable
-  - scrollable
+- List
+- Loading spinner
+- Modal
+- Overlay
+- Pagination
 - Product comparison
+- Progress bar
+- Sticky element
+- Tabs
+- Tile
+- Tooltips
+- Vertical navigation
 
 This project was bootstrapped with [Helpful React Scripts](https://github.com/helpfulhuman/helpful-react-scripts)

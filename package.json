@@ -1,16 +1,15 @@
 {
   "name": "helpful-ui-kit",
   "version": "0.1.0",
-  "description": "Put a description here",
+  "description": "Helpful Human's React Component Library",
   "main": "./build/main.js",
   "peerDependencies": {
     "react": "^16.0.0"
   },
   "dependencies": {
-
     "react": "^16.0.0",
     "webpack": "^2.6.1",
-    "react-dom": "^16.0.0"    
+    "react-dom": "^16.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,10 +18,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "author": {
-    "name": "Your name",
-    "email": "your email"
-  },
+  "contributors": [
+    "Ryan Canfield <ryan@helpfulhuman.com> (http://helpfulhuman.com)",
+    "Travis Salad <travis@helpfulhuman.com> (http://helpfulhuman.com)"
+  ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
