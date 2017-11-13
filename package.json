@@ -2,7 +2,8 @@
   "name": "helpful-ui-kit",
   "version": "0.1.0",
   "description": "Helpful Human's React Component Library",
-  "main": "./build/main.js",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
   "peerDependencies": {
     "react": "^16.0.0"
   },
@@ -13,26 +14,25 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack",
-    "storybook": "start-storybook -p 6006",
+    "start": "npm run storybook",
+    "build": "rollup -c",
+    "storybook": "npm run build && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "contributors": [
     "Ryan Canfield <ryan@helpfulhuman.com> (http://helpfulhuman.com)",
-    "Travis Salad <travis@helpfulhuman.com> (http://helpfulhuman.com)"
+    "Travis Salad <travis@helpfulhuman.com> (http://helpfulhuman.com)",
+    "Nick Glenn <nick@helpfulhuman.com> (http://helpfulhuman.com)"
   ],
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "@storybook/react": "^3.2.14",
     "@storybook/addon-actions": "^3.2.14",
     "@storybook/addon-links": "^3.2.14",
+    "@storybook/react": "^3.2.14",
+    "polished": "^1.8.2",
+    "rollup": "^0.51.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript2": "^0.8.0",
     "styled-components": "^2.2.3",
-    "polished": "^1.8.2"
+    "typescript": "^2.6.1"
   }
 }
