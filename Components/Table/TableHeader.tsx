@@ -1,15 +1,21 @@
-import React from 'react';
-import TableRow from './TableRow';
-import TableHeaderColumn from './TableHeaderColumn';
+import * as React from 'react';
+import {Column} from "./Table";
+import {TableRow} from './TableRow';
+import {TableHeaderColumn} from './TableHeaderColumn';
 
-export default class TableHeader extends React.Component {
+export interface TableHeaderProps {
+    toggleSort?: (val: string) => void;
+    columns: Column[]
+}
+
+export class TableHeader extends React.Component<TableHeaderProps> {
     
     constructor(props) {
         super(props);
         this.createTableHeader = this.createTableHeader.bind(this);
     }
 
-    createTableHeader() {
+    createTableHeader(): JSX.Element[] {
         const toggleSort = this.props.toggleSort || undefined;
         return this.props.columns.map((column, i) => {
             return (
@@ -24,7 +30,7 @@ export default class TableHeader extends React.Component {
     }
 
     
-    render() {
+    render(): JSX.Element {
         return (
             <thead tabIndex={0}>
                 <TableRow>

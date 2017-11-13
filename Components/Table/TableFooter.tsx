@@ -1,8 +1,14 @@
-import React from 'react';
-import TableRow from './TableRow';
-import TableBodyColumn from './TableBodyColumn';
+import * as React from 'react';
+import {Column} from './Table';
+import {TableRow} from './TableRow';
+import {TableBodyColumn} from './TableBodyColumn';
 
-export default class TableFooter extends React.Component {
+export interface TableFooterProps {
+    columns: Column[];
+    item: any
+}
+
+export class TableFooter extends React.Component<TableFooterProps> {
 
     constructor(props) {
         super(props);

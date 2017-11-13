@@ -1,9 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
-export default class TableHeaderColumn extends React.Component {
+export interface TableHeaderColumnProps {
+    toggleSort?: {(): void},
+    alignText?: string,
+    value: string
+}
 
-    render() {
+export class TableHeaderColumn extends React.Component<TableHeaderColumnProps> {
+
+    render(): JSX.Element {
 
         const HeaderColumn = styled.th`
             cursor: ${this.props.toggleSort ? 'pointer' : 'auto'};

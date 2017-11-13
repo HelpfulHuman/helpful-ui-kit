@@ -1,10 +1,29 @@
-import React from 'react';
-import TableHeader from './TableHeader';
-import TableBody from './TableBody';
-import TableFooter from './TableFooter';
+import * as React from 'react';
+import {TableHeader} from './TableHeader';
+import {TableBody} from './TableBody';
+import {TableFooter} from './TableFooter';
 import styled from 'styled-components';
 
-export default class Table extends React.Component {
+export interface Column {
+    title?: string;
+    toggleSort?: (val: string) => void;
+    sortProperty?: string;
+    placeholder?: string;
+    alignText?: string;
+    value?: any;
+}
+
+export interface TableProps {
+    columns: Column[];
+    data: any[];
+}
+
+export interface TableState {
+    sortProperty?: string;
+    sortOrder?: boolean;
+}
+
+export class Table extends React.Component<TableProps, TableState> {
     
     constructor(props) {
         super(props);
@@ -27,7 +46,7 @@ export default class Table extends React.Component {
     }
     
     // if sort properties exist, sort data before rendering item rows.
-    formatData() {
+    formatData(): any[] {
         const property = this.state.sortProperty;
         if (property) {
           return this.props.data.sort((a, b) => {
@@ -46,7 +65,7 @@ export default class Table extends React.Component {
         }
     }
 
-    render() {
+    render(): JSX.Element {
 
         const TableWrapper = styled.table`
             width: 100%;
