@@ -5,9 +5,15 @@ import {TableBodyColumn} from './TableBodyColumn';
 import styled from 'styled-components';
 
 export interface TableBodyProps {
-    columns: Column[],
-    data: any[]
+    columns: Column[];
+    data: any[];
 }
+
+const StyledBody = styled.tbody`
+    tr:not(:last-of-type) {
+        border-bottom: 1px solid lightgray;
+    };
+`
 
 export class TableBody extends React.Component<TableBodyProps> {
 
@@ -33,13 +39,8 @@ export class TableBody extends React.Component<TableBodyProps> {
     }
 
     render(): JSX.Element {
-        const StyledBody = styled.tbody`
-            tr:not(:last-of-type) {
-                border-bottom: 1px solid lightgray;
-            };
-        `
         return (
-            <StyledBody tabIndex={0}>
+            <StyledBody>
                 {this.props.children || this.createTableBody()}
             </StyledBody>
         )

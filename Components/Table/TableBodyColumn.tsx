@@ -6,14 +6,20 @@ export interface TableBodyColumnProps {
     value?: string;
 }
 
+const BodyColumn = styled.td`
+    text-align: ${props => props.style.textAlign};
+    padding: .5rem;
+`
+
 export class TableBodyColumn extends React.Component<TableBodyColumnProps> {
+    
+    public static defaultProps = {
+        alignText: 'left',
+    };
+    
     render(): JSX.Element {
-        const BodyColumn = styled.td`
-            text-align: ${this.props.alignText ? this.props.alignText.toLowerCase() : 'left'};
-            padding: .5rem;
-        `
         return (
-            <BodyColumn tabIndex={0}>
+            <BodyColumn style={{textAlign: this.props.alignText}}>
                 {this.props.children || this.props.value}
             </BodyColumn>
         )

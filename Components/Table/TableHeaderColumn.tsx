@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import {Column} from './Table';
 
 export interface TableHeaderColumnProps {
-    toggleSort?: {(): void},
-    alignText?: string,
-    value: string
+    headerColumnClicked?: {(val: Column): void},
+    column: Column;
 }
 
 export class TableHeaderColumn extends React.Component<TableHeaderColumnProps> {
@@ -12,8 +12,8 @@ export class TableHeaderColumn extends React.Component<TableHeaderColumnProps> {
     render(): JSX.Element {
 
         const HeaderColumn = styled.th`
-            cursor: ${this.props.toggleSort ? 'pointer' : 'auto'};
-            text-align: ${this.props.alignText ? this.props.alignText.toLowerCase() : 'left'};
+            cursor: ${this.props.headerColumnClicked && this.props.column.sortProperty ? 'pointer' : 'auto'};
+            text-align: ${this.props.column.alignText ? this.props.column.alignText.toLowerCase() : 'left'};
             padding: .5rem;
             border-bottom: 1px solid lightgray;
         `;
@@ -31,9 +31,9 @@ N/Eg2BbqpRHe9F+x9AHwvBUAAAAASUVORK5CYII=) no-repeat center right;
         `;
 
         return (
-            <HeaderColumn onClick={this.props.toggleSort || null} tabIndex={0}>
-                {this.props.children || this.props.value}
-                {this.props.toggleSort ? <ToggleIcon /> : undefined}
+            <HeaderColumn onClick={this.props.headerColumnClicked ? () => this.props.headerColumnClicked(this.props.column) : null}>
+                {this.props.children || this.props.column.title}
+                {this.props.headerColumnClicked && this.props.column.sortProperty ? <ToggleIcon /> : undefined}
             </HeaderColumn>
         )
     }

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export class TableRow extends React.Component {
     render() {
         return (
-            <tr tabIndex={0}>
+            <tr>
                 {this.props.children}
             </tr>
         )

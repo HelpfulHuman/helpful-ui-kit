@@ -6,82 +6,42 @@ import styled from 'styled-components';
 
 export interface Column {
     title?: string;
-    toggleSort?: (val: string) => void;
-    sortProperty?: string;
     placeholder?: string;
     alignText?: string;
     value?: any;
+    sortProperty?: string;
 }
 
 export interface TableProps {
     columns: Column[];
     data: any[];
+    headerColumnClicked?: (val: Column) => void;
+    style?: object;
+    className?: string;
 }
 
-export interface TableState {
-    sortProperty?: string;
-    sortOrder?: boolean;
-}
+const TableWrapper = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid lightgray
+`
 
-export class Table extends React.Component<TableProps, TableState> {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-            sortProperty: undefined,
-            sortOrder: true
-        }
-        this.toggleSort = this.toggleSort.bind(this);
-        this.formatData = this.formatData.bind(this);
-    }
-
-    // toggles the sort property/order for the data array being passed in.  Property is
-    // sortProperty from columns array.
-    toggleSort(property) {
-        if (!this.state.sortProperty || property !== this.state.sortProperty) {
-          this.setState({ sortProperty: property, sortOrder: true });
-        } else {
-          this.setState({ sortOrder: !this.state.sortOrder })
-        }
-    }
-    
-    // if sort properties exist, sort data before rendering item rows.
-    formatData(): any[] {
-        const property = this.state.sortProperty;
-        if (property) {
-          return this.props.data.sort((a, b) => {
-            const itemA = a[property] ? a[property].toLowerCase() : '';
-            const itemB = b[property] ? b[property].toLowerCase() : '';
-            if (itemA > itemB) {
-              return this.state.sortOrder ? 1 : -1;
-            } else if (itemB > itemA) {
-              return this.state.sortOrder ? -1 : 1;
-            } else {
-              return 0
-            }
-          })
-        } else {
-          return this.props.data
-        }
-    }
+export class Table extends React.Component<TableProps> {
 
     render(): JSX.Element {
 
-        const TableWrapper = styled.table`
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid lightgray
-        `
-
         return (
-            <TableWrapper className="table" tabIndex={0}>
+            <TableWrapper
+                className={this.props.className}
+                style={this.props.style}
+            >
                 <TableHeader
                     columns={this.props.columns}
-                    toggleSort={this.toggleSort}
+                    headerColumnClicked={this.props.headerColumnClicked}
                 />
                 <TableBody
                     columns={this.props.columns}
-                    data={this.formatData()}
+                    data={this.props.data}
                 /> 
                 {this.props.children}
             </TableWrapper>

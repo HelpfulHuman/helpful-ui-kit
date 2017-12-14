@@ -29,7 +29,7 @@ export class TableFooter extends React.Component<TableFooterProps> {
     render() {
 
         return (
-            <tfoot tabIndex={0}>
+            <tfoot>
                 <TableRow>
                     {this.props.children || this.createTableFooter()}
                 </TableRow>

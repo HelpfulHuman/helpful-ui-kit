@@ -4,8 +4,8 @@ import {TableRow} from './TableRow';
 import {TableHeaderColumn} from './TableHeaderColumn';
 
 export interface TableHeaderProps {
-    toggleSort?: (val: string) => void;
-    columns: Column[]
+    headerColumnClicked?: (val: Column) => void;
+    columns: Column[];
 }
 
 export class TableHeader extends React.Component<TableHeaderProps> {
@@ -16,23 +16,21 @@ export class TableHeader extends React.Component<TableHeaderProps> {
     }
 
     createTableHeader(): JSX.Element[] {
-        const toggleSort = this.props.toggleSort || undefined;
         return this.props.columns.map((column, i) => {
             return (
-                <TableHeaderColumn 
+                <TableHeaderColumn
+                    headerColumnClicked={this.props.headerColumnClicked || null}
                     key={`${i}-${column.title}`}
-                    value={column.title}
-                    toggleSort={column.sortProperty && toggleSort ? () => toggleSort(column.sortProperty) : null}
-                    alignText={column.alignText}
+                    column={column}
                 />
-            )
-        })
+            );
+        });
     }
 
     
     render(): JSX.Element {
         return (
-            <thead tabIndex={0}>
+            <thead>
                 <TableRow>
                     {this.props.children || this.createTableHeader()}
                 </TableRow>
