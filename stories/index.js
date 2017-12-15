@@ -4,8 +4,8 @@ import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { Button, Welcome } from "@storybook/react/demo";
 
-import Table from "../Components/Table/Table";
 import { tableColumns, tableData } from "../Data/TableData";
+import { Table } from "../build/index.es.js";
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />

@@ -11,12 +11,14 @@ module.exports = {
           title: 'Second Column',
           value: item => item.second,
           sortProperty: 'second',
-          placeholder: 'N/A'
+          placeholder: 'N/A',
+          alignText: 'center'
         },
         {
           title: 'Third Column',
           value: item => item.third,
-          placeholder: 'N/A'
+          placeholder: 'N/A',
+          alignText: 'right'
         },
     ],
     tableData: 
