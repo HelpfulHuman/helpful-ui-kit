@@ -4,47 +4,55 @@ import {TableBody} from './TableBody';
 import {TableFooter} from './TableFooter';
 import styled from 'styled-components';
 
-export interface Column {
-    title?: string;
-    placeholder?: string;
+export interface TableColumnProps {
     alignText?: string;
-    value?: any;
+    placeholder?: string;
     sortProperty?: string;
-}
+    title?: string;
+    value?: any;
+};
 
 export interface TableProps {
-    columns: Column[];
-    data: any[];
-    headerColumnClicked?: (val: Column) => void;
-    style?: object;
+    children?: React.ReactChild|React.ReactChild[];
     className?: string;
-}
+    columns: TableColumnProps[];
+    data: any[];
+    headerColumnClicked?: (val: TableColumnProps) => void;
+    style?: object;
+    showRowHover?: boolean;
+    striped?: boolean;
+    headerStyle?: object;
+    bodyStyle?: object;
+    rowStyle?: object;
+};
 
-const TableWrapper = styled.table`
-    width: 100%;
+var TableWrapper = styled.table`
+    border: 1px solid lightgray;
     border-collapse: collapse;
-    border: 1px solid lightgray
-`
+    width: 100%;
+`;
 
-export class Table extends React.Component<TableProps> {
-
-    render(): JSX.Element {
-
-        return (
-            <TableWrapper
-                className={this.props.className}
-                style={this.props.style}
-            >
-                <TableHeader
-                    columns={this.props.columns}
-                    headerColumnClicked={this.props.headerColumnClicked}
-                />
-                <TableBody
-                    columns={this.props.columns}
-                    data={this.props.data}
-                /> 
-                {this.props.children}
-            </TableWrapper>
-        )
-    }
-}
+export function Table(props: TableProps) {
+    return (
+        <TableWrapper
+            className={props.className}
+            style={props.style}
+        >
+            <TableHeader
+                style={props.headerStyle}
+                rowStyle={props.rowStyle}
+                columns={props.columns}
+                headerColumnClicked={props.headerColumnClicked}
+            />
+            {props.children}
+            <TableBody
+                striped={props.striped}
+                style={props.bodyStyle}
+                rowStyle={props.rowStyle}
+                columns={props.columns}
+                data={props.data}
+                showRowHover={props.showRowHover}
+            /> 
+        </TableWrapper>
+    );
+};

@@ -1,39 +1,39 @@
 import * as React from 'react';
-import {Column} from './Table';
+import styled from 'styled-components';
+import {TableColumnProps} from './Table';
 import {TableRow} from './TableRow';
 import {TableBodyColumn} from './TableBodyColumn';
 
 export interface TableFooterProps {
-    columns: Column[];
-    item: any
-}
+    children?: React.ReactChild|React.ReactChild[];
+    className?: string;
+    columns: TableColumnProps[];
+    item: any;
+    style?: object;
+};
 
-export class TableFooter extends React.Component<TableFooterProps> {
+var StyledTableFooter = styled.tfoot``;
 
-    constructor(props) {
-        super(props);
-        this.createTableFooter = this.createTableFooter.bind(this);
-    }
-
-    createTableFooter() {
-        return this.props.columns.map((item, index) => {
-            return (
-                <TableBodyColumn
-                    key={`foot-${index}`}
-                    value={`foot-${index}`}
-                />
-            )
-        })
-    }
-    
-    render() {
-
+function createTableFooter(props: TableFooterProps) {
+    return props.columns.map((item, index) => {
         return (
-            <tfoot>
-                <TableRow>
-                    {this.props.children || this.createTableFooter()}
-                </TableRow>
-            </tfoot>
-        )
-    }
-}
+            <TableBodyColumn
+                key={`foot-${index}`}
+                value={`foot-${index}`}
+            />
+        );
+    });
+};
+
+export function TableFooter(props: TableFooterProps) {
+    return (
+        <StyledTableFooter
+            className={props.className}
+            style={props.style}
+        >
+            <TableRow>
+                {props.children || createTableFooter(props)}
+            </TableRow>
+        </StyledTableFooter>
+    );
+};

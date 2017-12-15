@@ -1,40 +1,42 @@
 import * as React from 'react';
-import {Column} from "./Table";
+import styled from 'styled-components';
+import {TableColumnProps} from "./Table";
 import {TableRow} from './TableRow';
 import {TableHeaderColumn} from './TableHeaderColumn';
 
 export interface TableHeaderProps {
-    headerColumnClicked?: (val: Column) => void;
-    columns: Column[];
-}
+    children?: React.ReactChild|React.ReactChild[];
+    className?: string;
+    columns: TableColumnProps[];
+    headerColumnClicked?: (val: TableColumnProps) => void;
+    style?: object;
+    rowStyle?: object;
+};
 
-export class TableHeader extends React.Component<TableHeaderProps> {
-    
-    constructor(props) {
-        super(props);
-        this.createTableHeader = this.createTableHeader.bind(this);
-    }
+var StyledTableHeader = styled.thead``;
 
-    createTableHeader(): JSX.Element[] {
-        return this.props.columns.map((column, i) => {
-            return (
-                <TableHeaderColumn
-                    headerColumnClicked={this.props.headerColumnClicked || null}
-                    key={`${i}-${column.title}`}
-                    column={column}
-                />
-            );
-        });
-    }
-
-    
-    render(): JSX.Element {
+function renderTableColumns(props: TableHeaderProps): JSX.Element[] {
+    return props.columns.map((column, i) => {
         return (
-            <thead>
-                <TableRow>
-                    {this.props.children || this.createTableHeader()}
-                </TableRow>
-            </thead>
-        )
-    }
-}
+            <TableHeaderColumn
+                style={props.rowStyle}
+                headerColumnClicked={props.headerColumnClicked || null}
+                key={`${i}-${column.title}`}
+                column={column}
+            />
+        );
+    });
+};
+
+export function TableHeader(props: TableHeaderProps) {
+    return (
+        <StyledTableHeader
+            style={props.style}
+            className={props.className}
+        >
+            <TableRow>
+                {props.children || renderTableColumns(props)}
+            </TableRow>
+        </StyledTableHeader>
+    );
+};
