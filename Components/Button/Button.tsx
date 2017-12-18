@@ -56,7 +56,16 @@ export class Button extends React.Component<ButtonProps> {
     public static defaultProps: Partial<ButtonProps> = {
         disabled: false,
         type: 'button',
-        tabIndex: 1
+        tabIndex: 1,
+        style: {
+            background: undefined,
+            color: undefined,
+            border: undefined,
+            hoverBackground: undefined,
+            hoverBorderColor: undefined,
+            disabledColor: undefined,
+            disabledBackground: undefined,
+        }
     };
 
     handleKeyDown = (e) => {
