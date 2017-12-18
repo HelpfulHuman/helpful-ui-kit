@@ -1,0 +1,7 @@
+Components/
+Data/
+stories/
+.storybook/
+test/
+tsconfig.json
+rollup.config.json
