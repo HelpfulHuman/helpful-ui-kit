@@ -4,13 +4,11 @@ module.exports = {
         {
           title: 'First Column',
           value: item => item.first,
-          sortProperty: 'first',
           placeholder: 'N/A'
         },
         {
           title: 'Second Column',
           value: item => item.second,
-          sortProperty: 'second',
           placeholder: 'N/A',
           alignText: 'center'
         },
@@ -45,5 +43,3 @@ module.exports = {
         },
     ]
 }
-
-
