@@ -7,6 +7,10 @@ A collection of UI elements that you can import into your React project.
   - responsive
   - sortable
   - scrollable
+- Pagination
+- Button
+- Link
+- Modal
 
 
 ## Collection will include:
